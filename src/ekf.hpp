@@ -21,8 +21,8 @@ class EKF{
 
     void update(const VectorXd& z);
 
-    VectorXd getState() const { return x; }
-    MatrixXd getCovariance() const { return P; }
+    VectorXd get_state() const { return x; }
+    MatrixXd get_covariance() const { return P; }
 
   protected:
 
