@@ -13,10 +13,10 @@ void EKF::predict(double dt) {
   P = Phi * P * Phi.transpose() + Q;
 }
 
-void EKF::update(const VectorXd& z) {
+void EKF::update(const VectorXd& z, const double erg_w) {
 
   MatrixXd H_j = H(x);
-  MatrixXd S = H_j * P * H_j.transpose() + R;
+  MatrixXd S = H_j * P * H_j.transpose() + R * erg_w; // ergodic weight on measurement noise
   MatrixXd K = P * H_j.transpose() * S.inverse();
   x = x + K * (z - h(x));
   P = (MatrixXd::Identity(x.size(), x.size()) - K * H_j) * P;
