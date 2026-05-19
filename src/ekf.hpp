@@ -19,7 +19,7 @@ class EKF{
 
     void predict(double dt);
 
-    void update(const VectorXd& z, const double erg_w);
+    void update(const VectorXd& z, const VectorXd& erg_w);
 
     VectorXd get_state() const { return x; }
     MatrixXd get_covariance() const { return P; }
